@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+     
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans'>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold"/>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alegreya+Sans:regular,italic,bold,bolditalic"/>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nixie+One:regular,italic,bold,bolditalic"/>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alegreya+SC:regular,italic,bold,bolditalic"/>
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{{ author }}'s app</title>
+    
+    <style>
+    * {outline: none !important;}
+
+::selection {
+	background-color: #475B6F;
+	color: #fff;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	overflow-y: scroll;
+}
+
+body {
+	color: #6a6a6a;	
+	background: #dadada;
+}
+
+p {margin: 0 0 20px 0;	}
+
+img {max-width: 100%;}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+a{	
+	color: #4da7ca;
+	-o-transition: all .4s;
+	-ms-transition: all .4s;
+	-moz-transition: all .4s;
+	-webkit-transition: all .4s;
+	transition: all .4s;
+}
+
+a:hover {
+	color: #4290ae;	
+}
+
+
+h1, h2, h3, h4, h5, h6{		
+	margin: 0 0 15px 0;	
+	color: #3A4F52;
+	font-family: 'Alegreya Sans';
+}
+
+.btn{border-radius: 0;}
+.btn-o {
+    border: 1px solid rgb(19, 64, 71);
+    color: #3A4F52;
+}
+.btn-o:hover {
+    background: rgb(168, 27, 86);
+    color: white;
+}
+.btn.btn-o-white {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+}
+.btn.btn-o-white:hover {
+    background: white;
+    color: #6a6a6a;
+}
+    
+#header {	
+	position: relative;
+	padding: 0 !important;
+    
+}
+
+#header.header-wrapper {
+	background: url(https://media.altphotos.com/cache/images/2017/05/12/05/x800/orange-fruit-half.jpg) no-repeat center center;
+    background-size: cover;
+	display: table;
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	overflow-x: hidden; 
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    #header.header-wrapper {
+		height: auto;
+		min-height: 100vh;
+		padding: 0px; 
+	} 
+}
+
+#header.header-wrapper .header-wrapper-inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle; 
+}
+
+#header .top {
+	position:fixed;
+	top:0;
+	width: 100%;
+	padding: 30px;
+	height: auto;
+	z-index: 500;
+	-o-transition: all .5s;
+	-ms-transition: all .5s;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;	
+	transition: all .5s;		
+}
+
+#header .top.solid {
+    background: rgb(88, 158, 22);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#header .top h1{
+	margin-bottom: 0;
+}
+#header .top.solid .toggleDrawer i {
+    padding-top: 8px;
+}
+
+#header .logo, #header .toggleDrawer{
+	font-family: 'Alegreya SC';
+	color: rgb(202, 224, 104);
+}
+
+#header .slogan{
+	font-size: 4em;
+	margin-bottom: 15px;
+	line-height: 1em;
+	font-family: 'Nixie One';
+	color: white;
+}
+
+#header .secondary-slogan{
+	font-size: 1.6em;
+	color: rgba(122, 42, 116, 0.473);
+	line-height: 1em;
+	font-family: 'Alegreya SC';
+}
+
+#header .bottom {
+    bottom: 10%;
+	display: block;
+	position: absolute;
+	width: 100%;
+	z-index: 3;
+}
+#header .bottom a img {
+    width: 50px;
+}
+#header .bottom a {
+    opacity: 0.7;
+}
+#header .bottom a:hover {
+    opacity: 1;
+}
+.content-block{
+	background:transparent no-repeat center center fixed;
+	-webkit-background-size:100%;
+	-moz-background-size:100%;
+	-o-background-size:100%;
+	background-size:100%;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	overflow:hidden;
+	padding: 60px 0;
+}
+.parallax{
+	padding: 80px 0;
+}
+
+.block-body {
+	margin-top: 60px;
+}
+
+#services {
+	background-image: url(https://images.unsplash.com/photo-1561211919-1947abbbb35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);
+	color: white;
+}
+#parallax {
+	background-image: url(../images/blue_mac2.jpg);
+	color: white;
+}
+#contact {
+	background-image: url(../images/newsletter-bg.png);
+	color: white;
+	background-color: #405162;
+}
+#parallax h1{
+	margin-bottom: 60px;
+	color: white;
+}
+
+.recent-work {
+    width: 100%;
+    padding-bottom: 27%;
+    background: #C3C9CC;
+    display: table;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 27%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.recent-work span{
+	margin-top: -18px;
+	opacity: 0;
+	position: relative;
+	z-index: 1;
+}
+.recent-work:before {
+    background: rgba(2, 56, 58, 0.7);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    opacity: 0;
+    -o-transition: all .2s;
+	-ms-transition: all .2s;
+	-moz-transition: all .2s;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+}
+.recent-work:hover {
+    background-size: 200%;
+    background-position: center;
+}
+.recent-work:hover:before, .recent-work:hover span {
+    opacity: 1;
+}
+
+
+
+    </style>
+
+
+  </head>
+  <body>
+            
+
+            <div id="wrapper">
+                
+                <div id="header" class="content-block header-wrapper" >
+                    <div class="header-wrapper-inner">
+                        <section class="top clearfix">
+                            
+                           
+                            <div class="pos-f-t">
+                                <div class="collapse" id="navbarToggleExternalContent">
+                                  <div class="bg-dark p-4">
+                                    <h4 class="text-white">Collapsed content</h4>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="/"><h1>Home</h1></a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/about"><h1> About</h1></a>
+                                      </li>
+                                      <li class="nav-item">
+                                        <a class="nav-link" href="/login"><h1> Sign in</h1></a>
+                                      </li>
+                                    
+
+
+
+                                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                                  </div>
+                                </div>
+                                <nav class="navbar navbar-dark bg-dark">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                  </button>
+                                </nav>
+                              </div>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+
+
+                              <div class="pull-center">
+                                <h1><a class="logo" href="/">Pub Quiz</a></h1>
+                            </div>
+
+
+
+
+                        </section>
+
+                        
+                        <section class="center">
+                            <div class="slogan">
+                                QUIZ
+                            </div>
+                            <div class="secondary-slogan">
+                                The Flusk Theme By ThemeWagon.
+                            </div>
+                        </section>
+                        <section class="bottom">
+                            <a id="scrollToContent" href="#">
+                                <img src="https://image.shutterstock.com/image-vector/down-arrow-icon-vector-simple-260nw-1145844575.jpg">
+                            </a>
+                        </section>
+                      
+                    </div>
+                   
+                </div><!-- header -->
+                
+            </div>
+            
+            <div id="wrapper">
+                <ul class="nav justify-content-center"  style="background-color: rosybrown;color: rgb(186, 209, 83);">
+                       
+                </ul>
+                {% block content %}
+        
+
+                    <div class="content-block" id="portfolio">
+                        <div class="container">
+                            <header class="block-heading cleafix">
+                               
+                            </header>
+                            <section class="block-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a href="/quizFilm" class="recent-work" style="background-image:url(https://depor.com/resizer/DgYyDSeilydCTfFluOe988uAtzA=/980x528/smart/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/DVEXJOER6RCLTPQURXUW4NNZSM.jpg)">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>
+                              <!--     <div class="col-sm-4">
+                                        <a href="https://www.nps.gov/thingstodo/yell-grand-canyon-of-the-yellowstone.htm" class="recent-work" style="background-image:url(https://www.arcgis.com/sharing/rest/content/items/bc7810d831264b9c9914480e4b20dc56/resources/1570213390226.jpeg?w=1600)">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <a href="https://www.nps.gov/yell/planyourvisit/maps.htm" class="recent-work" style="background-image:url(http://npmaps.com/wp-content/uploads/yellowstone-midway-geyser-basin-map.jpg)">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>-->
+                                    
+                                </div>
+                                <center>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="/quizCartoon" class="recent-work" style="background-image:url(https://i2.wp.com/www.4ye.co.uk/wp-content/uploads/2014/11/DisneyCharacters.jpg)">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>
+                                   <!-- <div class="col-sm-4">
+                                        <a href="/food" class="recent-work" 
+                                        style="background-image:url(  https://i.pinimg.com/originals/bd/96/b4/bd96b44d79ff5f50b8540d677f722c46.jpg )">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>-->
+                                    <div class="col-sm-6">
+                                        <a href="/HarryPotter.html" class="recent-work" style="background-image:url(https://wallup.net/wp-content/uploads/2017/11/17/210526-Harry_Potter-748x421.jpg)">
+                                            <span class="btn btn-o-white">Click</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                </center>
+                            </section>
+                        </div>
+                    </div><!-- #portfolio -->
+
+			<div class="content-block parallax" id="services">
+                    <div class="container text-center">
+                        <header class="block-heading cleafix">
+                            <h1>Our Services</h1>
+                            <p>A little about what we do</p>
+                        </header>
+                        <section class="block-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="service">
+                                        <i class="fa fa-send-o"></i>
+                                        <h2>Illustration</h2>
+                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="service">
+                                        <i class="fa fa-heart-o"></i>
+                                        <h2>3D Modeling</h2>
+                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="service">
+                                        <i class="fa fa-camera-retro"></i>
+                                        <h2>Photography</h2>
+                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet, hendrerit in lorem.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div><!-- #services -->
+                {% endblock %}
+    
+            </div>
+           
+           
+
+
+
+
+            <div class="jumbotron text-center  text-white" style="margin-bottom:0 ; background-color: rgba(122, 42, 116, 0.473);">
+                    <strong>
+                      <h1>  SEE MORE ON:</h1><br>
+                        <i class="fa fa-pinterest" style="font-size:48px;color:red"></i>
+                        <i class="fa fa-instagram" style="font-size:48px;color:purple"></i>
+                        <i class="fa fa-twitter" style="font-size:48px;color:skyblue"></i>
+                        <br>
+                        <br>
+                        <br>
+                    </strong>
+            </div> 
+        
+                   
+
+      
+
+
+
+            
+
+
+
+
+
+
+</body>
+</html>
