@@ -12,6 +12,6 @@ korisnike u tablici. Skripta CreateDateBase omogucuje stvaranje SQLite baze.
 <li>set FLASK_APP=app.py</li>
 <li>set FLASK_DEBUG=1</li>
 <li>flask run</li>
-<li> u browser upisati: [ http://127.0.0.1:5000/] (https://duckduckgo.com).</li>
+<li> u browser upisati:  http://127.0.0.1:5000/ .</li>
 </ol>
 
