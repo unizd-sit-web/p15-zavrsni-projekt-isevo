@@ -7,19 +7,25 @@ from flask import *
 
 app=Flask(__name__)
 
-
+niz_username=[]
+niz_email=[]
+name=email=" "
 
 
 @app.route("/")
 def index():
    author="YELLOWSTONE"
+   print(name,email)
    return render_template("index.html",author=author)
 
 @app.route("/about/")
 def about():
    return render_template("about.html")
 
-
+def SavingUsersToArray():
+   name = request.form["name"]  
+   email = request.form["email"] 
+   return name,email
 
 
 #dodavanje korisnika u bazu
@@ -28,8 +34,14 @@ def saveDetails():
     msg = "msg"  
     if request.method == "POST":  
         try:  
-            name = request.form["name"]  
-            email = request.form["email"] 
+            #name = request.form["name"]  
+            #email = request.form["email"] 
+            name,email=SavingUsersToArray()
+            niz_username.append(name)
+            niz_email.append(email)
+            if name in niz_username:
+               print(True)
+
             with sqlite3.connect("employee.db") as con:  
                 cur = con.cursor()  
                 cur.execute("INSERT into Employees (name, email) values (?,?)",(name,email))  
@@ -48,13 +60,22 @@ def saveDetails():
 
 #ispis korisnika iz baze
 @app.route("/register")
-def register(): 
-    con = sqlite3.connect("employee.db")  
-    con.row_factory = sqlite3.Row  
-    cur = con.cursor()  
-    cur.execute("select * from Employees")  
-    rows = cur.fetchall()  
-    return render_template("register.html",rows = rows)   
+def register():
+   print(niz_username)
+   print(niz_email)
+   d=len(niz_username)
+
+   if len(niz_username)==0 and len(niz_email)==0:
+      return render_template("index.html")
+   elif((niz_username[d-1] in niz_username) and (niz_email[d-1] in niz_email)):
+      con = sqlite3.connect("employee.db")  
+      con.row_factory = sqlite3.Row  
+      cur = con.cursor()  
+      cur.execute("select * from Employees")  
+      rows = cur.fetchall()  
+      return render_template("register.html",rows = rows)  
+   else:
+      return render_template("index.html") 
 
 
 
